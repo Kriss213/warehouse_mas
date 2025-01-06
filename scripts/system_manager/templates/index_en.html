@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Management System</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
+        integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
+        crossorigin="anonymous"></script>
+    <script src="../static/js/main_en.js" type="module"></script>
+
+</head>
+<body>
+  <header>
+    <h1>Warehouse Management System</h1>
+  </header>
+  <main>
+    <div class="container">
+      <!-- Request Submission Form -->
+      <section>
+        <h2>Submit a Request</h2>
+        <form id="requestForm">
+          <div>
+            <label for="packageName">Package Name:</label>
+            <input type="text" id="packageName" name="packageName" required>
+          </div>
+          <div>
+            <label for="packageType">Package Type:</label>
+            <input type="text" id="packageType" name="packageType" required>
+          </div>
+          <div>
+            <label for="packageWeight">Package Weight (kg):</label>
+            <input type="number" id="packageWeight" name="packageWeight" required>
+          </div>
+          <div>
+            <label for="priority">Priority:</label>
+            <select id="priority" name="priority" required>
+              <option value="high">High</option>
+              <option value="normal" selected>Normal</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+          <button type="submit">Submit Request</button>
+        </form>
+        <button id="btn_generate_requests">Generate Request</button>
+      </section>
+
+      <!-- Status Monitor -->
+
+      <section class="status-monitor">
+        <h2>Status Monitor</h2>
+        <div class='status-indicator' id="unloadingPointStatus">
+          <span class="idle"></span> Unloading Point: Waiting
+        </div>
+        <div class='status-indicator' id="dispensersStatus">
+          <h3>Package Dispensers</h3>
+          <!-- Dispenser statuses will be dynamically added here -->
+        </div>
+        <div class='status-indicator' id="couriersStatus">
+          <h3>Couriers</h3>
+          <!-- Courier statuses will be dynamically added here -->
+        </div>
+      </section>
+
+      <!-- Request Status -->
+      <section class="request-status">
+        <h2>Request Status</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Request ID</th>
+              <th>Package Name</th>
+              <th>Package Type</th>
+              <th>Weight</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>Dispenser</th>
+              <th>Courier</th>
+            </tr>
+          </thead>
+          <tbody id="requestTableBody">
+           
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

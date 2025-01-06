@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noliktavas Vadības Sistēma</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
+        integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
+        crossorigin="anonymous"></script>
+    <script src="../static/js/main.js" type="module"></script>
+
+</head>
+<body>
+  <header>
+    <h1>Noliktavas Vadības Sistēma</h1>
+  </header>
+  <main>
+    <div class="container">
+      <!-- Pieprasījuma iesniegšanas forma -->
+      <section>
+        <h2>Iesniegt pieprasījumu</h2>
+        <form id="requestForm">
+          <div>
+            <label for="packageName">Paciņas nosaukums:</label>
+            <input type="text" id="packageName" name="packageName" required>
+          </div>
+          <div>
+            <label for="packageType">Paciņas tips:</label>
+            <input type="text" id="packageType" name="packageType" required>
+          </div>
+          <div>
+            <label for="packageWeight">Paciņas svars (kg):</label>
+            <input type="number" id="packageWeight" name="packageWeight" required>
+          </div>
+          <div>
+            <label for="priority">Prioritāte:</label>
+            <select id="priority" name="priority" required>
+              <option value="high">Augsta</option>
+              <option value="normal" selected>Normāla</option>
+              <option value="low">Zema</option>
+            </select>
+          </div>
+          <button type="submit">Iesniegt pieprasījumu</button>
+        </form>
+        <button id="btn_generate_requests">Ģenerēt pieprasījumu</button>
+      </section>
+
+      <!-- Statusa Monitors -->
+
+      <section class="status-monitor">
+        <h2>Statusa monitors</h2>
+        <div class='status-indicator' id="unloadingPointStatus">
+          <span class="idle"></span> Nokraušanas punkts: Gaida
+        </div>
+        <div class='status-indicator' id="dispensersStatus">
+          <h3>Paciņu uzkrāvēji</h3>
+          <!-- Dispenser statuses will be dynamically added here -->
+        </div>
+        <div class='status-indicator' id="couriersStatus">
+          <h3>Kurjeri</h3>
+          <!-- Courier statuses will be dynamically added here -->
+        </div>
+      </section>
+
+      <!-- Pieprasījumu Statuss -->
+      <section class="request-status">
+        <h2>Pieprasījumu Statuss</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Pieprasījuma ID</th>
+              <th>Paciņas nosaukums</th>
+              <th>Paciņas tips</th>
+              <th>Svars</th>
+              <th>Prioritāte</th>
+              <th>Statuss</th>
+              <th>Uzkrāvējs</th>
+              <th>Kurjers</th>
+            </tr>
+          </thead>
+          <tbody id="requestTableBody">
+           
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
