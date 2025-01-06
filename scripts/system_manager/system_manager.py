@@ -180,7 +180,7 @@ def main(args=None):
 
     sys_mng_node = SystemManagerNode()
 
-    flask_thread = threading.Thread(target=lambda: app.run(debug=True, use_reloader=False))
+    flask_thread = threading.Thread(target=lambda: app.run(host="0.0.0.0", debug=True, use_reloader=False))
     flask_thread.daemon = True # kill thread when main program exits
     flask_thread.start()
     
